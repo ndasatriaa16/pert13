@@ -1,0 +1,113 @@
+package pert13;
+
+import java.util.Scanner;
+
+public class BangunDatar {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        // Menampilkan menu
+        tampilkanMenu();
+
+        // Meminta pengguna untuk memilih bangun datar
+        System.out.print("Silahkan pilih bangun datar (1: Persegi, 2: Segitiga, 3: Lingkaran): ");
+        int pilihan = input.nextInt();
+
+        switch (pilihan) {
+            case 1:
+                hitungLuasKelilingPersegi();
+                break;
+            case 2:
+                hitungLuasKelilingSegitiga();
+                break;
+            case 3:
+                hitungLuasKelilingLingkaran();
+                break;
+            default:
+                System.out.println("Pilihan tidak valid.");
+        }
+
+        input.close();
+    }
+
+    // Prosedur untuk menampilkan menu
+    public static void tampilkanMenu() {
+        System.out.println("=== Program Menghitung Bangun Datar ===");
+        System.out.println("1. Persegi");
+        System.out.println("2. Segitiga");
+        System.out.println("3. Lingkaran");
+    }
+
+    // Method overloading untuk menghitung luas dan keliling persegi
+    public static void hitungLuasKelilingPersegi() {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Masukkan panjang sisi: ");
+        double sisi = input.nextDouble();
+
+        double luas = (sisi * sisi);
+        double keliling = (4*sisi);
+
+        System.out.println("Luas persegi: " + luas);
+        System.out.println("Keliling persegi: " + keliling);
+    }
+
+    // Method overloading untuk menghitung luas dan keliling segitiga
+    public static void hitungLuasKelilingSegitiga() {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Masukkan panjang alas: ");
+        double alas = input.nextDouble();
+        System.out.print("Masukkan tinggi: ");
+        double tinggi = input.nextDouble();
+        System.out.print("Masukkan panjang sisi miring: ");
+        double sisiMiring = input.nextDouble();
+
+        double luas = (alas * tinggi);
+        double keliling = (alas +tinggi+ sisiMiring);
+
+        System.out.println("Luas segitiga: " + luas);
+        System.out.println("Keliling segitiga: " + keliling);
+    }
+
+    // Method overloading untuk menghitung luas dan keliling lingkaran
+    public static void hitungLuasKelilingLingkaran() {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Masukkan panjang jari-jari: ");
+        double jariJari = input.nextDouble();
+
+        double luas = (3.14*(jariJari*jariJari));
+        double keliling = hitungKeliling(jariJari);
+
+        System.out.println("Luas lingkaran: " + luas);
+        System.out.println("Keliling lingkaran: " + keliling);
+    }
+
+    // Fungsi untuk menghitung luas persegi
+    public static double hitungLuas2(double sisi) {
+        return sisi * sisi;
+    }
+
+    // Fungsi untuk menghitung keliling persegi
+    public static double hitungKeliling2(double sisi) {
+        return 4 * sisi;
+    }
+
+    // Fungsi untuk menghitung luas segitiga
+    public static double hitungLuas(double alas, double tinggi) {
+        return 0.5 * alas * tinggi;
+    }
+
+    // Fungsi untuk menghitung keliling segitiga
+    public static double hitungKeliling(double alas, double tinggi, double sisiMiring) {
+        return alas + tinggi + sisiMiring;
+    }
+
+    // Fungsi untuk menghitung luas lingkaran
+    public static double hitungLuas(double jariJari) {
+        return Math.PI * jariJari * jariJari;
+    }
+
+    // Fungsi untuk menghitung keliling lingkaran
+    public static double hitungKeliling(double jariJari) {
+        return 2 * Math.PI * jariJari;
+    }
+}
