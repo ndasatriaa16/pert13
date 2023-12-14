@@ -1,0 +1,82 @@
+package pert13;
+
+import java.util.Scanner;
+import java.lang.String;
+
+public class Kalkulator {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        // Meminta pengguna untuk memilih operasi
+        System.out.print("Silahkan pilih operasi (1: Penjumlahan, 2: Pengurangan, 3: Perkalian, 4: Pembagian): ");
+        int pilihan = input.nextInt();
+
+        if (pilihan >= 1 && pilihan <= 4) {
+            // Meminta input angka dari pengguna
+            System.out.print("Masukkan angka pertama: ");
+            double angka1 = input.nextDouble();
+            System.out.print("Masukkan angka kedua: ");
+            double angka2 = input.nextDouble();
+
+            // Menentukan operasi berdasarkan pilihan pengguna
+            switch (pilihan) {
+                case 1:
+                    // Penjumlahan
+                    double hasilPenjumlahan = hitung(angka1, angka2, "penjumlahan");
+                    System.out.println(angka1+angka2);
+                    break;
+                case 2:
+                    // Pengurangan
+                    double hasilPengurangan = hitung(angka1, angka2, "pengurangan");
+                    System.out.println(angka1-angka2);
+                    break;
+                case 3:
+                    // Perkalian
+                    double hasilPerkalian = hitung(angka1, angka2, "perkalian");
+                    System.out.println(angka1*angka2);
+                    break;
+                case 4:
+                    // Pembagian
+                    double hasilPembagian = hitung(angka1, angka2, "pembagian");
+                    System.out.println(angka1/angka2);
+                    break;
+            }
+        } else {
+            System.out.println("Pilihan tidak valid. Silahkan pilih 1, 2, 3, atau 4.");
+        }
+
+        input.close();
+    }
+
+    // Method overloading untuk penjumlahan
+    public static double hitung(double angka1, double angka2, String operasi) {
+        if (operasi.equals("penjumlahan")) {
+            return angka1 + angka2;
+        } else {
+            return 0; // Jika operasi tidak valid, kembalikan nilai default
+        }
+    }
+
+    // Method overloading untuk pengurangan
+    public static double hitung(double angka1, double angka2, int operasi) {
+        if (operasi == 1) {
+            return angka1 - angka2;
+        } else {
+            return 0; // Jika operasi tidak valid, kembalikan nilai default
+        }
+    }
+
+    // Method overloading untuk perkalian
+    public static double hitung(double angka1, double angka2, double operasi) {
+        return angka1 * angka2;
+    }
+
+    // Method overloading untuk pembagian
+    public static double hitung2(double angka1, double angka2, String operasi2) {
+        if (operasi2.equals("pembagian") && angka2 != 0) {
+            return angka1 / angka2;
+        } else {
+            return 0; // Jika operasi tidak valid atau pembagian dengan nol, kembalikan nilai default
+        }
+    }
+}
